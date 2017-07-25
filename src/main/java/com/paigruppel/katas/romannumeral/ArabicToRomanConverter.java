@@ -14,6 +14,21 @@ public class ArabicToRomanConverter {
 		case (3):
 			converted = "III";
 			break;
+		case (4):
+			converted = "IV";
+			break;
+		case (5):
+			converted = "V";
+			break;
+		case (6):
+			converted = "VI";
+			break;
+		case (7):
+			converted = "VII";
+			break;
+		case (8):
+			converted = "VIII";
+			break;
 		}
 		return converted;
 	}
