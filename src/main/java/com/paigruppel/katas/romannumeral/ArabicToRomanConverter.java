@@ -51,6 +51,11 @@ public class ArabicToRomanConverter {
 		tensDigit.put(2, "XX");
 		tensDigit.put(3, "XXX");
 		tensDigit.put(4, "XL");
+		tensDigit.put(5, "L");
+		tensDigit.put(6, "LX");
+		tensDigit.put(7, "LXX");
+		tensDigit.put(8, "LXXX");
+		tensDigit.put(9, "XC");
 		return tensDigit;
 
 	}
