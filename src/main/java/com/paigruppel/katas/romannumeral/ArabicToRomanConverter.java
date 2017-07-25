@@ -10,6 +10,10 @@ public class ArabicToRomanConverter {
 			break;
 		case (2):
 			converted = "II";
+			break;
+		case (3):
+			converted = "III";
+			break;
 		}
 		return converted;
 	}

@@ -19,4 +19,11 @@ public class ArabicToRomanConverterTest {
 		String response = underTest.convertToRoman(2);
 		assertEquals("II", response);
 	}
+	
+	@Test
+	public void shouldReturnIII() {
+		ArabicToRomanConverter underTest = new ArabicToRomanConverter();
+		String response = underTest.convertToRoman(3);
+		assertEquals("III", response);
+	}
 }
