@@ -73,4 +73,16 @@ public class ArabicToRomanConverterTest {
 		String response = underTest.convertToRoman(10);
 		assertEquals("X", response);
 	}
+	
+	@Test
+	public void shouldReturnXX(){
+		String response = underTest.convertToRoman(20);
+		assertEquals("XX", response);
+	}
+	
+	@Test
+	public void shouldReturnXXX(){
+		String response = underTest.convertToRoman(30);
+		assertEquals("XXX", response);
+	}
 }

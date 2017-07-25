@@ -22,8 +22,11 @@ public class ArabicToRomanConverter {
 		arabicToRoman.put(7, "VII");
 		arabicToRoman.put(8, "VIII");
 		arabicToRoman.put(9, "IX");
-		arabicToRoman.put(10, "X");
 		
+		
+		arabicToRoman.put(10, "X");
+		arabicToRoman.put(20, "XX");
+		arabicToRoman.put(30, "XXX");
 		
 		return arabicToRoman;
 	}
