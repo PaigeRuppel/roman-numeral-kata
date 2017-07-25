@@ -21,8 +21,10 @@ public class ArabicToRomanConverter {
 		String converted = "";
 		if (inputArray.size() == 1) {
 			converted = unitsDigit().get(input);
-		} else {
+		} else if (inputArray.size() == 2) {
 			converted = tensDigit().get(inputArray.get(0)) + unitsDigit().get(inputArray.get(1));
+		} else {
+			converted = hundredsDigit().get(inputArray.get(0)) + tensDigit().get(inputArray.get(1)) + unitsDigit().get(inputArray.get(2));
 		}
 		return converted;
 	}
@@ -47,6 +49,7 @@ public class ArabicToRomanConverter {
 	public static Map<Integer, String> tensDigit() {
 		Map<Integer, String> tensDigit = new HashMap<>();
 
+		tensDigit.put(0, "");
 		tensDigit.put(1, "X");
 		tensDigit.put(2, "XX");
 		tensDigit.put(3, "XXX");
@@ -57,6 +60,15 @@ public class ArabicToRomanConverter {
 		tensDigit.put(8, "LXXX");
 		tensDigit.put(9, "XC");
 		return tensDigit;
+
+	}
+	
+	public static Map<Integer, String> hundredsDigit() {
+		Map<Integer, String> hundredsDigit = new HashMap<>();
+
+		hundredsDigit.put(1, "C");
+		
+		return hundredsDigit;
 
 	}
 

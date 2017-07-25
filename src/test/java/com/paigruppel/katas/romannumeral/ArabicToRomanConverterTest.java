@@ -121,6 +121,12 @@ public class ArabicToRomanConverterTest {
 		String response = underTest.convertToRoman(90);
 		assertEquals("XC", response);
 	}
+	
+	@Test
+	public void shouldReturnC() {
+		String response = underTest.convertToRoman(100);
+		assertEquals("C", response);
+	}
 		
 	@Test
 	public void shouldReturnXI(){
