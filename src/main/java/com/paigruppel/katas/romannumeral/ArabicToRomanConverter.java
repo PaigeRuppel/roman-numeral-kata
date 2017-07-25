@@ -80,6 +80,14 @@ public class ArabicToRomanConverter {
 		Map<Integer, String> hundredsDigit = new HashMap<>();
 
 		hundredsDigit.put(1, "C");
+		hundredsDigit.put(2, "CC");
+		hundredsDigit.put(3, "CCC");
+		hundredsDigit.put(4, "CD");
+		hundredsDigit.put(5, "D");
+		hundredsDigit.put(6, "DC");
+		hundredsDigit.put(7, "DCC");
+		hundredsDigit.put(8, "DCCC");
+		hundredsDigit.put(9, "CM");
 
 		return hundredsDigit;
 
