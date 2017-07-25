@@ -17,8 +17,10 @@ public class ArabicToRomanConverter {
 			converted = unitsToRoman(inputArray, 0);
 		} else if (inputArray.size() == 2) {
 			converted = tensToRoman(inputArray, 0) + unitsToRoman(inputArray, 1);
-		} else {
+		} else if (inputArray.size() == 3) {
 			converted = hundredsToRoman(inputArray, 0) + tensToRoman(inputArray, 1) + unitsToRoman(inputArray, 2);
+		} else {
+			converted = "M" + hundredsToRoman(inputArray, 1) + tensToRoman(inputArray, 2) + unitsToRoman(inputArray, 3);
 		}
 		return converted;
 	}
@@ -79,6 +81,7 @@ public class ArabicToRomanConverter {
 	public static Map<Integer, String> hundredsDigit() {
 		Map<Integer, String> hundredsDigit = new HashMap<>();
 
+		hundredsDigit.put(0, "");
 		hundredsDigit.put(1, "C");
 		hundredsDigit.put(2, "CC");
 		hundredsDigit.put(3, "CCC");
