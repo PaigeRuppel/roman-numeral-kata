@@ -50,7 +50,7 @@ public class ArabicToRomanConverter {
 		tensDigit.put(1, "X");
 		tensDigit.put(2, "XX");
 		tensDigit.put(3, "XXX");
-
+		tensDigit.put(4, "XL");
 		return tensDigit;
 
 	}
