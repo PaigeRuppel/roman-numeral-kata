@@ -1,36 +1,28 @@
 package com.paigruppel.katas.romannumeral;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class ArabicToRomanConverter {
 
 	public String convertToRoman(int input) {
-		String converted = "";
-		switch (input) {
-		case (1):
-			converted = "I";
-			break;
-		case (2):
-			converted = "II";
-			break;
-		case (3):
-			converted = "III";
-			break;
-		case (4):
-			converted = "IV";
-			break;
-		case (5):
-			converted = "V";
-			break;
-		case (6):
-			converted = "VI";
-			break;
-		case (7):
-			converted = "VII";
-			break;
-		case (8):
-			converted = "VIII";
-			break;
-		}
+		String converted = arabicToRoman().get(input);
 		return converted;
+	}
+	
+	public static Map<Integer, String> arabicToRoman() {
+		Map<Integer, String> arabicToRoman = new HashMap<>();
+		
+		arabicToRoman.put(1, "I");
+		arabicToRoman.put(2, "II");
+		arabicToRoman.put(3, "III");
+		arabicToRoman.put(4, "IV");
+		arabicToRoman.put(5, "V");
+		arabicToRoman.put(6, "VI");
+		arabicToRoman.put(7, "VII");
+		arabicToRoman.put(8, "VIII");
+		
+		return arabicToRoman;
 	}
 
 }
