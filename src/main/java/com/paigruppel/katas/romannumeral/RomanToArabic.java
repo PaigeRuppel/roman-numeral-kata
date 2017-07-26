@@ -21,6 +21,8 @@ public class RomanToArabic {
 		for (int next = 1; next < inputArray.length; next++) {
 			if (inputArray[1] <= inputArray[0]) {
 				response = response + romanArabic.get(inputArray[next]);				
+			} else {
+				response = romanArabic.get(inputArray[next]) - response;
 			}
 		}
 		
