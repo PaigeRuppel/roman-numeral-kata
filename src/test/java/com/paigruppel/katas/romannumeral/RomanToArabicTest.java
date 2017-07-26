@@ -17,25 +17,25 @@ public class RomanToArabicTest {
 	@Test
 	public void shouldReturn1() {
 		int response = underTest.convertToArabic("I");
-		assertEquals(response, 1);
+		assertEquals(1, response);
 	}
 
 	@Test
 	public void shouldReturn2() {
 		int response = underTest.convertToArabic("II");
-		assertEquals(response, 2);
+		assertEquals(2, response);
 	}
 
 	@Test
 	public void shouldReturn3() {
 		int response = underTest.convertToArabic("III");
-		assertEquals(response, 3);
+		assertEquals(3, response);
 	}
 
 	@Test
 	public void shouldReturn4() {
 		int response = underTest.convertToArabic("IV");
-		assertEquals(response, 4);
+		assertEquals(4, response);
 	}
 
 }

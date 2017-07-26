@@ -13,10 +13,15 @@ public class RomanToArabic {
 		romanArabic.put('V', 5);
 		
 		char[] inputArray = input.toCharArray();
-		int response = 0;
 		
-		for (int i = 0; i < inputArray.length; i++) {
-			response = response + romanArabic.get(inputArray[i]);
+		
+		int first = 0;
+		int response = romanArabic.get(inputArray[0]);
+		
+		for (int next = 1; next < inputArray.length; next++) {
+			if (inputArray[1] <= inputArray[0]) {
+				response = response + romanArabic.get(inputArray[next]);				
+			}
 		}
 		
 		
