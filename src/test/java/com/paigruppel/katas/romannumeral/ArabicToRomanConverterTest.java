@@ -183,6 +183,12 @@ public class ArabicToRomanConverterTest {
 	}
 
 	@Test
+	public void shouldReturnMM() {
+		String response = underTest.convertToRoman(2000);
+		assertEquals("MM", response);
+	}
+	
+	@Test
 	public void shouldReturnXI() {
 		String response = underTest.convertToRoman(11);
 		assertEquals("XI", response);

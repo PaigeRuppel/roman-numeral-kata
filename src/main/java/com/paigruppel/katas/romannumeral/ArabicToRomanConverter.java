@@ -20,7 +20,7 @@ public class ArabicToRomanConverter {
 		} else if (inputArray.size() == 3) {
 			converted = hundredsToRoman(inputArray, 0) + tensToRoman(inputArray, 1) + unitsToRoman(inputArray, 2);
 		} else {
-			converted = "M" + hundredsToRoman(inputArray, 1) + tensToRoman(inputArray, 2) + unitsToRoman(inputArray, 3);
+			converted = thousandsToRoman(inputArray, 0) + hundredsToRoman(inputArray, 1) + tensToRoman(inputArray, 2) + unitsToRoman(inputArray, 3);
 		}
 		return converted;
 	}
@@ -98,6 +98,19 @@ public class ArabicToRomanConverter {
 
 	private String hundredsToRoman(ArrayList<Integer> inputArray, int index) {
 		return hundredsDigit().get(inputArray.get(index));
+	}
+	
+	public static Map<Integer, String> thousandsDigit() {
+		Map<Integer, String> thousandsDigit = new HashMap<>();
+		
+		thousandsDigit.put(1, "M");
+		thousandsDigit.put(2, "MM");
+	
+		return thousandsDigit;
+	}
+	
+	private String thousandsToRoman(ArrayList<Integer> inputArray, int index) {
+		return thousandsDigit().get(inputArray.get(index));
 	}
 
 }
