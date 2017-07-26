@@ -11,7 +11,13 @@ public class RomanToArabicTest {
 		RomanToArabic underTest = new RomanToArabic();
 		int response = underTest.convertToArabic("I");
 		assertEquals(response, 1);
-		
+	}
+	
+	@Test
+	public void shouldReturn2() {
+		RomanToArabic underTest = new RomanToArabic();
+		int response = underTest.convertToArabic("II");
+		assertEquals(response, 2);
 	}
 
 }
