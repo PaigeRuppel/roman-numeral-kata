@@ -32,4 +32,10 @@ public class RomanToArabicTest {
 		assertEquals(response, 3);
 	}
 
+	@Test
+	public void shouldReturn4() {
+		int response = underTest.convertToArabic("IV");
+		assertEquals(response, 4);
+	}
+
 }
