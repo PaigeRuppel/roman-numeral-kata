@@ -38,5 +38,30 @@ public class RomanToArabicTest {
 		int response = underTest.convertToArabic("IV");
 		assertThat(response, is(4));
 	}
+	
+	@Test
+	public void shouldReturn5() {
+		assertThat(underTest.convertToArabic("V"), is(5));
+	}
+	
+	@Test
+	public void shouldReturn6() {
+		assertThat(underTest.convertToArabic("VI"), is(6));
+	}
+	
+	@Test
+	public void shouldReturn7() {
+		assertThat(underTest.convertToArabic("VII"), is(7));
+	}
+	
+	@Test
+	public void shouldReturn8() {
+		assertThat(underTest.convertToArabic("VIII"), is(8));
+	}
+	
+	@Test
+	public void shouldReturn9() {
+		assertThat(underTest.convertToArabic("IX"), is(9));
+	}
 
 }
