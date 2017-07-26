@@ -11,6 +11,7 @@ public class RomanToArabic {
 		
 		romanArabic.put('I', 1);
 		romanArabic.put('V', 5);
+		romanArabic.put('X', 10);
 		
 		char[] inputArray = input.toCharArray();
 		
