@@ -80,6 +80,11 @@ public class RomanToArabicTest {
 	}
 	
 	@Test
+	public void shouldReturn544() {
+		assertThat(underTest.convertToArabic("DXLIV"), is(544));
+	}
+	
+	@Test
 	public void shouldReturn1144() {
 		assertThat(underTest.convertToArabic("MCXLIV"), is(1144));
 	}
