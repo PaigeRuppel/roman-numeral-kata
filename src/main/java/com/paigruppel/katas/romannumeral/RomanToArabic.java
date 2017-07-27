@@ -15,15 +15,23 @@ public class RomanToArabic {
 		
 		char[] inputArray = input.toCharArray();
 		
+		int[] rawValues = new int[inputArray.length];
 		
+		for (int i = 0 ; i < rawValues.length; i++) {
+			rawValues[i] = romanArabic.get(inputArray[i]);
+		}
+		
+
 		int first = 0;
-		int response = romanArabic.get(inputArray[0]);
+		int response = rawValues[0];
 		
 		for (int next = 1; next < inputArray.length; next++) {
-			if (inputArray[1] <= inputArray[0]) {
-				response = response + romanArabic.get(inputArray[next]);				
+			if (rawValues[next] <= rawValues[first]) {
+				response =  response + romanArabic.get(inputArray[next]);	
+				first++;
 			} else {
-				response = romanArabic.get(inputArray[next]) - response;
+				response = (response - rawValues[first]) + (rawValues[next] - rawValues[first]);
+				first++;
 			}
 		}
 		
