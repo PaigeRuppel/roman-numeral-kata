@@ -68,5 +68,15 @@ public class RomanToArabicTest {
 	public void shouldReturn14() {
 		assertThat(underTest.convertToArabic("XIV"), is(14));
 	}
+	
+	@Test
+	public void shouldReturn24() {
+		assertThat(underTest.convertToArabic("XXIV"), is(24));
+	}
+	
+	@Test
+	public void shouldReturn44() {
+		assertThat(underTest.convertToArabic("XLIV"), is(44));
+	}
 
 }
