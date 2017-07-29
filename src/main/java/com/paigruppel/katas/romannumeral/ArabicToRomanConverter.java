@@ -2,62 +2,92 @@ package com.paigruppel.katas.romannumeral;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ArabicToRomanConverter {
 
+	// private int input;
+	//
+	// public ArabicToRomanConverter(int input) {
+	// this.input = input;
+	// }
+
 	public String convertToRoman(int input) {
 		// splitting input into an array so that I can determine length of input
 
-		ArrayList<Integer> inputArray = createArray(input);
+		List<Integer> inputAsList = createListFrom(input);
 
 		String converted = "";
 
-		if (inputArray.size() == 1) {
-			converted = unitsToRoman(inputArray, 0);
-		} else if (inputArray.size() == 2) {
-			converted = tensToRoman(inputArray, 0) + unitsToRoman(inputArray, 1);
-		} else if (inputArray.size() == 3) {
-			converted = hundredsToRoman(inputArray, 0) + tensToRoman(inputArray, 1) + unitsToRoman(inputArray, 2);
+		if (inputAsList.size() == 1) {
+			converted = unitsToRoman(inputAsList, 0);
+		} else if (inputAsList.size() == 2) {
+			converted = tensToRoman(inputAsList, 0) + unitsToRoman(inputAsList, 1);
+		} else if (inputAsList.size() == 3) {
+			converted = hundredsToRoman(inputAsList, 0) + tensToRoman(inputAsList, 1) + unitsToRoman(inputAsList, 2);
 		} else {
-			converted = thousandsToRoman(inputArray, 0) + hundredsToRoman(inputArray, 1) + tensToRoman(inputArray, 2) + unitsToRoman(inputArray, 3);
+			converted = thousandsToRoman(inputAsList, 0) + hundredsToRoman(inputAsList, 1) + tensToRoman(inputAsList, 2)
+					+ unitsToRoman(inputAsList, 3);
 		}
 		return converted;
 	}
 
-	private ArrayList<Integer> createArray(int input) {
-		ArrayList<Integer> inputArray = new ArrayList<>();
+	private List<Integer> createListFrom(int input) {
+		List<Integer> inputAsList = new ArrayList<>();
 		do {
 			// adding at the first index each time so that the array will be in
 			// order relative to the input
-			inputArray.add(0, input % 10);
+			inputAsList.add(0, input % 10);
 			input /= 10;
 		} while (input > 0);
-		return inputArray;
+		return inputAsList;
 	}
 
-	public static Map<Integer, String> unitsDigit() {
-		Map<Integer, String> unitsDigit = new HashMap<>();
+	private static Map<Integer, String> arabicRoman() {
+		Map<Integer, String> arabicRoman = new HashMap<>();
 
-		unitsDigit.put(0, "");
-		unitsDigit.put(1, "I");
-		unitsDigit.put(2, "II");
-		unitsDigit.put(3, "III");
-		unitsDigit.put(4, "IV");
-		unitsDigit.put(5, "V");
-		unitsDigit.put(6, "VI");
-		unitsDigit.put(7, "VII");
-		unitsDigit.put(8, "VIII");
-		unitsDigit.put(9, "IX");
+		arabicRoman.put(0, "");
+		arabicRoman.put(1, "I");
+		arabicRoman.put(5, "V");
+		arabicRoman.put(10, "X");
+		arabicRoman.put(50, "L");
+		arabicRoman.put(100, "C");
+		arabicRoman.put(500, "D");
+		arabicRoman.put(1000, "M");
+
+		return arabicRoman;
+	}
+
+	private static Map<Integer, String> buildOutput(String first, String second, String third) {
+		Map<Integer, String> conversionMap = new HashMap<>();
+
+		conversionMap.put(0, "");
+		conversionMap.put(1, first);
+		conversionMap.put(2, first + first);
+		conversionMap.put(3, first + first + first);
+		conversionMap.put(4, first + second);
+		conversionMap.put(5, second);
+		conversionMap.put(6, second + first);
+		conversionMap.put(7, second + first + first);
+		conversionMap.put(8, second + first + first + first);
+		conversionMap.put(9, first + third);
+
+		return conversionMap;
+
+	}
+
+	private static Map<Integer, String> unitsDigit() {
+		Map<Integer, String> unitsDigit = buildOutput("I", "V", "X");
 
 		return unitsDigit;
 	}
 
-	private String unitsToRoman(ArrayList<Integer> inputArray, int index) {
+	private String unitsToRoman(List<Integer> inputArray, int index) {
 		return unitsDigit().get(inputArray.get(index));
 	}
 
-	public static Map<Integer, String> tensDigit() {
+	private static Map<Integer, String> tensDigit() {
 		Map<Integer, String> tensDigit = new HashMap<>();
 
 		tensDigit.put(0, "");
@@ -74,11 +104,11 @@ public class ArabicToRomanConverter {
 
 	}
 
-	private String tensToRoman(ArrayList<Integer> inputArray, int index) {
+	private String tensToRoman(List<Integer> inputArray, int index) {
 		return tensDigit().get(inputArray.get(index));
 	}
 
-	public static Map<Integer, String> hundredsDigit() {
+	private static Map<Integer, String> hundredsDigit() {
 		Map<Integer, String> hundredsDigit = new HashMap<>();
 
 		hundredsDigit.put(0, "");
@@ -96,20 +126,20 @@ public class ArabicToRomanConverter {
 
 	}
 
-	private String hundredsToRoman(ArrayList<Integer> inputArray, int index) {
+	private String hundredsToRoman(List<Integer> inputArray, int index) {
 		return hundredsDigit().get(inputArray.get(index));
 	}
-	
-	public static Map<Integer, String> thousandsDigit() {
+
+	private static Map<Integer, String> thousandsDigit() {
 		Map<Integer, String> thousandsDigit = new HashMap<>();
-		
+
 		thousandsDigit.put(1, "M");
 		thousandsDigit.put(2, "MM");
-	
+
 		return thousandsDigit;
 	}
-	
-	private String thousandsToRoman(ArrayList<Integer> inputArray, int index) {
+
+	private String thousandsToRoman(List<Integer> inputArray, int index) {
 		return thousandsDigit().get(inputArray.get(index));
 	}
 
