@@ -61,7 +61,6 @@ public class ArabicToRomanConverter {
 
 	private static Map<Integer, String> unitsDigit() {
 		Map<Integer, String> unitsDigit = buildMap("I", "V", "X");
-
 		return unitsDigit;
 	}
 
