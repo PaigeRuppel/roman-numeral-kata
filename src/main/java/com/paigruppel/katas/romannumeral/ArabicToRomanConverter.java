@@ -9,25 +9,24 @@ public class ArabicToRomanConverter {
 
 	private int input;
 
+	private String converted;
+	
+	private List<Integer> inputAsList;
+
 	public ArabicToRomanConverter(int input) {
 		this.input = input;
+		inputAsList = createListFrom(input);
 	}
 
 	public String convertToRoman() {
-		// splitting input into an array so that I can determine length of input
-		List<Integer> inputAsList = createListFrom(input);
-
-		String converted = "";
-
 		if (inputAsList.size() == 1) {
-			converted = unitsToRoman(inputAsList, 0);
+			converted = unitsToRoman(0);
 		} else if (inputAsList.size() == 2) {
-			converted = tensToRoman(inputAsList, 0) + unitsToRoman(inputAsList, 1);
+			converted = tensToRoman(0) + unitsToRoman(1);
 		} else if (inputAsList.size() == 3) {
-			converted = hundredsToRoman(inputAsList, 0) + tensToRoman(inputAsList, 1) + unitsToRoman(inputAsList, 2);
+			converted = hundredsToRoman(0) + tensToRoman(1) + unitsToRoman(2);
 		} else {
-			converted = thousandsToRoman(inputAsList, 0) + hundredsToRoman(inputAsList, 1) + tensToRoman(inputAsList, 2)
-					+ unitsToRoman(inputAsList, 3);
+			converted = "M" + hundredsToRoman(1) + tensToRoman(2) + unitsToRoman(3);
 		}
 		return converted;
 	}
@@ -43,7 +42,7 @@ public class ArabicToRomanConverter {
 		return inputAsList;
 	}
 
-	private static Map<Integer, String> buildOutput(String first, String second, String third) {
+	private static Map<Integer, String> buildMap(String first, String second, String third) {
 		Map<Integer, String> conversionMap = new HashMap<>();
 
 		conversionMap.put(0, "");
@@ -58,51 +57,36 @@ public class ArabicToRomanConverter {
 		conversionMap.put(9, first + third);
 
 		return conversionMap;
-
 	}
 
 	private static Map<Integer, String> unitsDigit() {
-		Map<Integer, String> unitsDigit = buildOutput("I", "V", "X");
+		Map<Integer, String> unitsDigit = buildMap("I", "V", "X");
 
 		return unitsDigit;
 	}
 
-	private String unitsToRoman(List<Integer> inputAsList, int index) {
+	private String unitsToRoman(int index) {
 		return unitsDigit().get(inputAsList.get(index));
 	}
 
 	private static Map<Integer, String> tensDigit() {
-		Map<Integer, String> tensDigit = buildOutput("X", "L", "C");
+		Map<Integer, String> tensDigit = buildMap("X", "L", "C");
 
 		return tensDigit;
 	}
 
-	private String tensToRoman(List<Integer> inputAsList, int index) {
+	private String tensToRoman(int index) {
 		return tensDigit().get(inputAsList.get(index));
 	}
 
 	private static Map<Integer, String> hundredsDigit() {
-		Map<Integer, String> hundredsDigit = buildOutput("C", "D", "M");
+		Map<Integer, String> hundredsDigit = buildMap("C", "D", "M");
 
 		return hundredsDigit;
-
 	}
 
-	private String hundredsToRoman(List<Integer> inputAsList, int index) {
+	private String hundredsToRoman(int index) {
 		return hundredsDigit().get(inputAsList.get(index));
-	}
-
-	private static Map<Integer, String> thousandsDigit() {
-		Map<Integer, String> thousandsDigit = new HashMap<>();
-
-		thousandsDigit.put(1, "M");
-		thousandsDigit.put(2, "MM");
-
-		return thousandsDigit;
-	}
-
-	private String thousandsToRoman(List<Integer> inputAsList, int index) {
-		return thousandsDigit().get(inputAsList.get(index));
 	}
 
 }
