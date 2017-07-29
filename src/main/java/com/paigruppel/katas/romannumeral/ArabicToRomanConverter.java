@@ -7,15 +7,14 @@ import java.util.Map;
 
 public class ArabicToRomanConverter {
 
-	// private int input;
-	//
-	// public ArabicToRomanConverter(int input) {
-	// this.input = input;
-	// }
+	private int input;
 
-	public String convertToRoman(int input) {
+	public ArabicToRomanConverter(int input) {
+		this.input = input;
+	}
+
+	public String convertToRoman() {
 		// splitting input into an array so that I can determine length of input
-
 		List<Integer> inputAsList = createListFrom(input);
 
 		String converted = "";
@@ -44,21 +43,6 @@ public class ArabicToRomanConverter {
 		return inputAsList;
 	}
 
-	private static Map<Integer, String> arabicRoman() {
-		Map<Integer, String> arabicRoman = new HashMap<>();
-
-		arabicRoman.put(0, "");
-		arabicRoman.put(1, "I");
-		arabicRoman.put(5, "V");
-		arabicRoman.put(10, "X");
-		arabicRoman.put(50, "L");
-		arabicRoman.put(100, "C");
-		arabicRoman.put(500, "D");
-		arabicRoman.put(1000, "M");
-
-		return arabicRoman;
-	}
-
 	private static Map<Integer, String> buildOutput(String first, String second, String third) {
 		Map<Integer, String> conversionMap = new HashMap<>();
 
@@ -83,51 +67,29 @@ public class ArabicToRomanConverter {
 		return unitsDigit;
 	}
 
-	private String unitsToRoman(List<Integer> inputArray, int index) {
-		return unitsDigit().get(inputArray.get(index));
+	private String unitsToRoman(List<Integer> inputAsList, int index) {
+		return unitsDigit().get(inputAsList.get(index));
 	}
 
 	private static Map<Integer, String> tensDigit() {
-		Map<Integer, String> tensDigit = new HashMap<>();
+		Map<Integer, String> tensDigit = buildOutput("X", "L", "C");
 
-		tensDigit.put(0, "");
-		tensDigit.put(1, "X");
-		tensDigit.put(2, "XX");
-		tensDigit.put(3, "XXX");
-		tensDigit.put(4, "XL");
-		tensDigit.put(5, "L");
-		tensDigit.put(6, "LX");
-		tensDigit.put(7, "LXX");
-		tensDigit.put(8, "LXXX");
-		tensDigit.put(9, "XC");
 		return tensDigit;
-
 	}
 
-	private String tensToRoman(List<Integer> inputArray, int index) {
-		return tensDigit().get(inputArray.get(index));
+	private String tensToRoman(List<Integer> inputAsList, int index) {
+		return tensDigit().get(inputAsList.get(index));
 	}
 
 	private static Map<Integer, String> hundredsDigit() {
-		Map<Integer, String> hundredsDigit = new HashMap<>();
-
-		hundredsDigit.put(0, "");
-		hundredsDigit.put(1, "C");
-		hundredsDigit.put(2, "CC");
-		hundredsDigit.put(3, "CCC");
-		hundredsDigit.put(4, "CD");
-		hundredsDigit.put(5, "D");
-		hundredsDigit.put(6, "DC");
-		hundredsDigit.put(7, "DCC");
-		hundredsDigit.put(8, "DCCC");
-		hundredsDigit.put(9, "CM");
+		Map<Integer, String> hundredsDigit = buildOutput("C", "D", "M");
 
 		return hundredsDigit;
 
 	}
 
-	private String hundredsToRoman(List<Integer> inputArray, int index) {
-		return hundredsDigit().get(inputArray.get(index));
+	private String hundredsToRoman(List<Integer> inputAsList, int index) {
+		return hundredsDigit().get(inputAsList.get(index));
 	}
 
 	private static Map<Integer, String> thousandsDigit() {
@@ -139,8 +101,8 @@ public class ArabicToRomanConverter {
 		return thousandsDigit;
 	}
 
-	private String thousandsToRoman(List<Integer> inputArray, int index) {
-		return thousandsDigit().get(inputArray.get(index));
+	private String thousandsToRoman(List<Integer> inputAsList, int index) {
+		return thousandsDigit().get(inputAsList.get(index));
 	}
 
 }
